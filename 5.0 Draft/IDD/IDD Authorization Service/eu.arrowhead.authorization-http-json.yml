@@ -82,7 +82,7 @@ paths:
                   description: String identifier for the access right needed to be authorized. These access rights
                    must be pre-defined within the policy engine used. ("consume", "read", "write", "delete", "update", etc)
                 resource:
-                  type: string
+                  $ref: '#/components/schemas/TypeIdentifier'
                   description: The identifier of the resource being accessed. The format of the string is 
                     dependant on the Authentication mechanism used. (e.g., a certificate string, token, id, etc)
               required:
@@ -95,13 +95,13 @@ paths:
                 value:
                   - consumer: "user123"
                     access-right: "write"
-                    resource: "document1"
-                  - consumer: "admin456"
-                    access-right: "read"
-                    resource: "document2"
+                    resource: "eu.arrowhead.tempreadings-http-json"
+                  - consumer: "MWtzOXIpaUEsOyEhc1NsTwo="
+                    access-right: "consume"
+                    resource: "eu.arrowhead.humidityreadings-http-json"
                   - consumer: "user789"
                     access-right: "read"
-                    resource: "document3"
+                    resource: "eu.arrowhead.rpmcontroller-http-json"
               example2:
                 summary: a single authorization request.
                 value:
@@ -326,3 +326,11 @@ components:
       minItems: 3
       maxItems: 3
       example: ["yBXJ2b+1XtvKJCRYJgHdcA==", "read", "se.company.heat-sensor-b5421.temperature"]
+
+    TypeIdentifier:
+      description: |
+        Identifies a particular type of service, such as `eu.arrowhead.service-discovery-coap-cbor`
+        or `eu.arrowhead.orchestration-http-json`.
+      type: string
+      pattern: ^[^!*,:@^~]+$
+      example: eu.arrowhead.authorization-http-json
