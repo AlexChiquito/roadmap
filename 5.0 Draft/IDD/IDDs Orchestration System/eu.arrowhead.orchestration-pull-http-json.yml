@@ -19,7 +19,7 @@ info:
     in addition, at least one interface must be specified. The orchestration system will attempt to match the _requested-service_ information
     with services present on the orchestration rules or SoS configurations. 
 
-version: 5.0.0-rc.1
+version: 5.0.0-rc.2
 
 # Additional information present in the IDD template
 x-transfer-protocol: [HTTP, HTTPS]
